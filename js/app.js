@@ -28,9 +28,9 @@ function Product( name ) {
   this.name = name;
 
   if ( this.name === 'sweep' )
-  { this.image = `./img/${name}.PNG`;}
+  { this.image = `./img/${name}.png`;}
   else if ( this.name === 'usb' )
-  { this.image = `./img/${name}.GIF`;}
+  { this.image = `./img/${name}.gif`;}
   else
   { this.image = `./img/${name}.jpg`;}
   this.clicks = 0;
