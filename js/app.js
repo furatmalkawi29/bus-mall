@@ -3,10 +3,10 @@
 'use strict';
 
 let productArray = [
-  'bag', 'banana', 'boots', 'breakfast', 'bathroom',
-  'chair', 'dragon', 'bubblegum', 'cthulhu', 'dog-duck',
-  'pen', 'shark', 'sweep', 'scissors', 'pet-sweep',
-  'tauntaun', 'wine-glass', 'water-can', 'usb', 'unicorn',
+  'bag.jpg', 'banana.jpg', 'boots.jpg', 'breakfast.jpg', 'bathroom.jpg',
+  'chair.jpg', 'dragon.jpg', 'bubblegum.jpg', 'cthulhu.jpg', 'dog-duck.jpg',
+  'pen.jpg', 'shark.jpg', 'sweep.png', 'scissors.jpg', 'pet-sweep.jpg',
+  'tauntaun.jpg', 'wine-glass.jpg', 'water-can.jpg', 'usb.gif', 'unicorn.jpg',
 ];
 
 
@@ -22,15 +22,21 @@ const resultBtn = document.getElementById( 'resultBtn' );
 
 
 
-function Product( name ) {
-  this.name = name;
 
-  if ( this.name === 'sweep' )
-  { this.image = `./img/${name}.png`;}
-  else if ( this.name === 'usb' )
-  { this.image = `./img/${name}.gif`;}
-  else
-  { this.image = `./img/${name}.jpg`;}
+
+function Product( imageName ) {
+  this.imageName = imageName; // 'bag.jpg'
+
+  let dir = './img/' ;
+  this.image = dir + imageName;
+
+  let str = imageName.split( '.' ); // str =  ['bag','jpg']
+  this.name = str[0]; // name = 'bag' 
+
+  // console.log( this.name );
+  // console.log( this.image );
+
+
   this.clicks = 0;
   this.shown = 0;
   Product.all.push( this );
@@ -51,7 +57,9 @@ let clickCounter = 20;
 
 
 for( let i = 0; i < productArray.length; i++ ) {
+  console.log( productArray[i] );
   new Product( productArray[i] );
+
 }
 
 
@@ -170,3 +178,6 @@ const viewResults = function ( )
 function randomNumber( min, max ) {
   return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
 }
+
+
+
