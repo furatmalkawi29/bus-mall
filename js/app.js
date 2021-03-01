@@ -17,8 +17,6 @@ const leftImage = document.getElementById( 'leftImage' );
 const middleImage = document.getElementById( 'middleImage' );
 const rightImage = document.getElementById( 'rightImage' );
 const resultBtn = document.getElementById( 'resultBtn' );
-const resulList = document.getElementById( 'resultList' );
-
 
 
 
@@ -172,6 +170,3 @@ const viewResults = function ( )
 function randomNumber( min, max ) {
   return Math.floor( Math.random() * ( max - min + 1 ) ) + min;
 }
-
-
-
