@@ -44,13 +44,16 @@ function Product( imageName ) {
 
   let str = imageName.split( '.' ); // str =  ['bag','jpg']
   this.name = str[0]; // name = 'bag'
-  
+
   this.clicks = 0;
   this.shown = 0;
 
   Product.all.push( this );
 
   Product.nameArr.push( this.name );
+
+
+
 }
 
 Product.all = [];
@@ -73,6 +76,8 @@ for( let i = 0; i < productArray.length; i++ ) {
 //------------------------------------------------------------------------------------
 
 function renderNewProduct() {
+
+  Product.innerHTML = '';
 
   let imageIndex = randomNumber( 0, Product.all.length - 1 ); // gets set of random numbers : [3,15,4] ;
 
@@ -146,6 +151,8 @@ function handelClick( event ) {
       renderNewProduct();
     }
   } else {
+    // convert objs array to --> JSON string // send it to local storage
+    localStorage.setItem( 'clicksShownTotal', JSON.stringify( Product.all ) );
     imageSection.removeEventListener( 'click', handelClick );
     resultBtn.style.visibility = 'visible';
     resultBtn.addEventListener( 'click', viewResults );
@@ -234,6 +241,7 @@ const viewResults = function ( )
 renderNewProduct();
 
 imageSection.addEventListener( 'click', handelClick );
+// getData();
 
 //------------------------------------------------------------------------------------
 
@@ -269,3 +277,15 @@ function randomNumber( min, max ) {
   return [leftIndex,middleIndex,rightIndex];
 }
 
+
+///--------------------------------------------------------------------------------
+function getData() {
+  //get objs array from local storage
+  renderNewProduct();
+  const data = localStorage.getItem( 'clicksShownTotal' );
+  if( data ) { // if you dont have anything in local storage / dont render
+    const objData = JSON.parse( data );
+    Product.all = objData;
+  }
+}
+getData();
