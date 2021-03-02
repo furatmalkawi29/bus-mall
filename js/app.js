@@ -44,8 +44,7 @@ function Product( imageName ) {
 
   let str = imageName.split( '.' ); // str =  ['bag','jpg']
   this.name = str[0]; // name = 'bag'
-
-
+  
   this.clicks = 0;
   this.shown = 0;
 
@@ -53,7 +52,6 @@ function Product( imageName ) {
 
   Product.nameArr.push( this.name );
 }
-
 
 Product.all = [];
 Product.nameArr = [];
@@ -270,5 +268,4 @@ function randomNumber( min, max ) {
 
   return [leftIndex,middleIndex,rightIndex];
 }
-
 
